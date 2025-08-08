@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>グラデーション</title>
+</head>
+<link rel="stylesheet" href="base.css">
+<style>
+  .blackBg {
+    width: 100%;
+    height: 300px;
+    background-color: black;
+    align-content: center;
+    text-align: center;
+  }
+  .rainbow-gradient {
+    width: 100%;
+    background: linear-gradient(90deg in hsl longer hue, red, red);
+    background-size: 300px 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 5rem;
+    font-weight: bold;
+    animation: rainbow-bg 1s linear infinite;
+  }
+
+  @keyframes rainbow-bg {
+    to {
+      background-position: 300px 0;
+    }
+  }
+
+  .rainbow-gradient--shadow {
+    position: absolute;
+    filter: blur(20px);
+    pointer-events: none;
+  }
+
+  @property --custom-color {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #f00;
+  }
+
+  @property --custom-color2 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #f00;
+  }
+
+  /* longer: 補間の弧は長い方の弧
+      = 色相角がアニメーション中に180度を超えたとき、弧が反転 */
+  .conic-rainbow {
+    max-width: 400px;
+    height: 400px;
+    width: 100%;
+    background: conic-gradient(in hsl longer hue, var(--custom-color), var(--custom-color2));
+    animation: rainbow 5s linear infinite;
+  }
+
+  /* increasing: 補間の弧は時計回り
+  = 色相角がアニメーション中に180度を超えても弧が反転しない */
+  .conic-rainbow2 {
+    max-width: 400px;
+    height: 400px;
+    width: 100%;
+    background: conic-gradient(in hsl increasing hue, var(--custom-color), var(--custom-color2));
+    animation: rainbow 5s linear infinite;
+  }
+
+  @keyframes rainbow {
+    0% {
+      --custom-color: yellow;
+      --custom-color2: magenta;
+    }
+    100% {
+      --custom-color: cyan;
+      --custom-color2: magenta;
+    }
+  }
+</style>
+
+<body>
+<div class="blackBg">
+  <div class="rainbow-gradient rainbow-gradient--shadow">
+    <p>RAINBOW GRADIENT</p>
+  </div>
+  <div class="rainbow-gradient">
+    <p>RAINBOW GRADIENT</p>
+  </div>
+</div>
+
+
+<div class="conic-rainbow">
+  <h3>longer</h3>
+</div>
+
+<div class="conic-rainbow2">
+  <h3>increasing</h3>
+</div>
+</body>
+</html>
