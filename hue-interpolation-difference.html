@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>in hsl のグラデーション比較</title>
+</head>
+<link rel="stylesheet" href="base.css">
+<style>
+  /* 短い弧 */
+  .shorter-hue-gradient {
+    width: 100%;
+    height: calc((100vh - 16px * 3) / 4);
+    background: linear-gradient(90deg in hsl shorter hue, red, cyan);
+  }
+
+  /* 長い弧 */
+  .longer-hue-gradient {
+    width: 100%;
+    height: calc((100vh - 16px * 3) / 4);
+    background: linear-gradient(90deg in hsl longer hue, red, cyan);
+  }
+
+  /* 時計回りの弧 */
+  .increasing-hue-gradient {
+    width: 100%;
+    height: calc((100vh - 16px * 3) / 4);
+    background: linear-gradient(90deg in hsl increasing hue, red, cyan);
+  }
+
+  /* 反時計回りの弧 */
+  .decreasing-hue-gradient {
+    width: 100%;
+    height: calc((100vh - 16px * 3) / 4);
+    background: linear-gradient(90deg in hsl decreasing hue, red, cyan);
+  }
+</style>
+<body>
+<div class="shorter-hue-gradient">
+  <h3>shorter hue</h3>
+</div>
+
+<div class="longer-hue-gradient">
+  <h3>longer hue</h3>
+</div>
+
+<div class="increasing-hue-gradient">
+  <h3>increasing hue</h3>
+</div>
+
+<div class="decreasing-hue-gradient">
+  <h3>decreasing hue</h3>
+</div>
+</body>
+</html>

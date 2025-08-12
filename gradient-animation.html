@@ -19,9 +19,8 @@
     background: linear-gradient(90deg in hsl longer hue, red, red);
     background-size: 300px 100%;
     background-clip: text;
-    -webkit-background-clip: text;
     color: transparent;
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: bold;
     animation: rainbow-bg 1s linear infinite;
   }
@@ -36,6 +35,12 @@
     position: absolute;
     filter: blur(20px);
     pointer-events: none;
+  }
+
+  .conicGradientWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
   }
 
   @property --custom-color {
@@ -53,9 +58,8 @@
   /* longer: 補間の弧は長い方の弧
       = 色相角がアニメーション中に180度を超えたとき、弧が反転 */
   .conic-rainbow {
-    max-width: 400px;
-    height: 400px;
-    width: 100%;
+    width: min(45vw, 400px);
+    height: min(45vw, 400px);
     background: conic-gradient(in hsl longer hue, var(--custom-color), var(--custom-color2));
     animation: rainbow 5s linear infinite;
   }
@@ -63,9 +67,8 @@
   /* increasing: 補間の弧は時計回り
   = 色相角がアニメーション中に180度を超えても弧が反転しない */
   .conic-rainbow2 {
-    max-width: 400px;
-    height: 400px;
-    width: 100%;
+    width: min(45vw, 400px);
+    height: min(45vw, 400px);
     background: conic-gradient(in hsl increasing hue, var(--custom-color), var(--custom-color2));
     animation: rainbow 5s linear infinite;
   }
@@ -92,13 +95,14 @@
   </div>
 </div>
 
+<div class="conicGradientWrapper">
+  <div class="conic-rainbow">
+    <h3>longer hue</h3>
+  </div>
 
-<div class="conic-rainbow">
-  <h3>longer</h3>
-</div>
-
-<div class="conic-rainbow2">
-  <h3>increasing</h3>
+  <div class="conic-rainbow2">
+    <h3>increasing hue</h3>
+  </div>
 </div>
 </body>
 </html>

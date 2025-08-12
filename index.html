@@ -26,13 +26,13 @@
     background: linear-gradient(90deg in oklab, red, blue);
   }
 
-  /* 円筒色空間での補間（省略すると短い弧） */
+  /* 円筒色空間での補間 */
   .hsl-gradient {
     width: 100%;
     height: 200px;
-    background: linear-gradient(90deg in hsl, red, blue);
-    /* 以下と同等 */
-    /*background: linear-gradient(90deg in hsl shorter hue, red, blue);*/
+    background: linear-gradient(90deg in hsl shorter hue, red, blue);
+    /* 以下と同等（省略すると短い弧） */
+    /*background: linear-gradient(90deg in hsl, red, blue);*/
   }
 
   /* 円筒色空間での補間（長い弧を指定） */
