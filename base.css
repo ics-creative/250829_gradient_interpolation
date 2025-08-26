@@ -1,3 +1,8 @@
+:root {
+  /* 比較デモ用の矩形の高さ */
+  --rect-height: calc((100vh - 16px * 3) / 4);
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -9,9 +14,10 @@ html {
 }
 
 body {
+  min-height: 100%;
   display: grid;
   place-items: center;
-  gap: 20px;
+  gap: 16px;
   background-color: #fff;
 }
 
@@ -27,4 +33,11 @@ h3 {
   color: white;
   padding: 18px;
   font-size: 1.2rem;
+}
+
+code {
+  background-color: #eee;
+  color: #333;
+  padding: 4px 8px;
+  border-radius: 4px;
 }

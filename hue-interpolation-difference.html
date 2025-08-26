@@ -7,49 +7,46 @@
 </head>
 <link rel="stylesheet" href="base.css">
 <style>
-  /* 短い弧 */
-  .shorter-hue-gradient {
+  .gradationRect {
     width: 100%;
-    height: calc((100vh - 16px * 3) / 4);
+    height: var(--rect-height);
+  }
+
+  /* 短い弧 */
+  .gradationRect_shorterHue {
     background: linear-gradient(90deg in hsl shorter hue, red, cyan);
   }
 
   /* 長い弧 */
-  .longer-hue-gradient {
-    width: 100%;
-    height: calc((100vh - 16px * 3) / 4);
+  .gradationRect_longerHue {
     background: linear-gradient(90deg in hsl longer hue, red, cyan);
   }
 
   /* 時計回りの弧 */
-  .increasing-hue-gradient {
-    width: 100%;
-    height: calc((100vh - 16px * 3) / 4);
+  .gradationRect_increasingHue {
     background: linear-gradient(90deg in hsl increasing hue, red, cyan);
   }
 
   /* 反時計回りの弧 */
-  .decreasing-hue-gradient {
-    width: 100%;
-    height: calc((100vh - 16px * 3) / 4);
+  .gradationRect_decreasingHue {
     background: linear-gradient(90deg in hsl decreasing hue, red, cyan);
   }
 </style>
 <body>
-<div class="shorter-hue-gradient">
-  <h3>shorter hue</h3>
+<div class="gradationRect gradationRect_shorterHue">
+  <h3><code>shorter hue</code></h3>
 </div>
 
-<div class="longer-hue-gradient">
-  <h3>longer hue</h3>
+<div class="gradationRect gradationRect_longerHue">
+  <h3><code>longer hue</code></h3>
 </div>
 
-<div class="increasing-hue-gradient">
-  <h3>increasing hue</h3>
+<div class="gradationRect gradationRect_increasingHue">
+  <h3><code>increasing hue</code></h3>
 </div>
 
-<div class="decreasing-hue-gradient">
-  <h3>decreasing hue</h3>
+<div class="gradationRect gradationRect_decreasingHue">
+  <h3><code>decreasing hue</code></h3>
 </div>
 </body>
 </html>

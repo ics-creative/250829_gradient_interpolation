@@ -3,105 +3,64 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>グラデーション</title>
+  <title>グラデーション補間方法比較</title>
 </head>
 <link rel="stylesheet" href="base.css">
 <style>
-  .basic-gradient {
+  :root {
+    /* 比較デモ用の矩形の高さ */
+    --rect-height: calc((100vh - 16px * 4) / 5);
+  }
+
+  .gradationRect {
     width: 100%;
-    height: 200px;
+    height: var(--rect-height);
+  }
+
+  .gradationRect_basic {
     background: linear-gradient(90deg, red, blue);
   }
 
-  .basic-gradient-layer {
-    width: 100%;
-    height: 200px;
+  .gradationRect_basicLayer {
     background: linear-gradient(90deg, red, transparent), linear-gradient(90deg, transparent, blue);
   }
 
   /* 直交色空間での補間 */
-  .oklab-gradient {
-    width: 100%;
-    height: 200px;
+  .gradationRect_oklab {
     background: linear-gradient(90deg in oklab, red, blue);
   }
 
   /* 円筒色空間での補間 */
-  .hsl-gradient {
-    width: 100%;
-    height: 200px;
+  .gradationRect_hslShorterHue {
     background: linear-gradient(90deg in hsl shorter hue, red, blue);
     /* 以下と同等（省略すると短い弧） */
     /*background: linear-gradient(90deg in hsl, red, blue);*/
   }
 
   /* 円筒色空間での補間（長い弧を指定） */
-  .longer-hue-gradient {
-    width: 100%;
-    height: 200px;
+  .gradationRect_hslLongerHue {
     background: linear-gradient(90deg in hsl longer hue, red, blue);
-  }
-
-  .radial-rainbow {
-    max-width: 400px;
-    height: 400px;
-    width: 100%;
-    display: grid;
-    place-items: center;
-    position: relative;
-
-    &::before {
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      position: absolute;
-      content: '';
-      display: block;
-      background: repeating-radial-gradient(
-        circle at center in hsl longer hue,
-        red 0px,
-        red 100px
-      );
-    }
-  }
-
-  .conic-rainbow {
-    max-width: 400px;
-    height: 400px;
-    width: 100%;
-    background: conic-gradient(in hsl longer hue, red, red);
   }
 </style>
 <body>
-
-<h1>CSS グラデーション</h1>
-
-<h2>比較</h2>
-<div class="basic-gradient">
+<div class="gradationRect gradationRect_basic">
   <h3>通常のグラデーション</h3>
 </div>
 
-<div class="basic-gradient-layer">
+<div class="gradationRect gradationRect_basicLayer">
   <h3>通常のグラデーション2(赤ー透明 と 透明ー青 の重ね合わせ)</h3>
 </div>
 
-<div class="oklab-gradient">
+<div class="gradationRect gradationRect_oklab">
   <h3>直交色空間のグラデーション（コントラスト比が一定）</h3>
 </div>
 
-<div class="hsl-gradient">
+<div class="gradationRect gradationRect_hslShorterHue">
   <h3>円筒色空間のグラデーション（赤〜青までの短い弧）</h3>
 </div>
 
-<div class="longer-hue-gradient">
+<div class="gradationRect gradationRect_hslLongerHue">
   <h3>円筒色空間のグラデーション（赤〜青までの長い弧）</h3>
 </div>
-
-
-<div class="radial-rainbow"></div>
-
-<div class="conic-rainbow"></div>
-
 </body>
 </html>

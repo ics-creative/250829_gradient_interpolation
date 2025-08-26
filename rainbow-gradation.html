@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>虹色グラデーション</title>
+</head>
+<link rel="stylesheet" href="base.css">
+<style>
+  .rainbow {
+    width: 100%;
+    height: var(--rect-height);
+    /* red から red の longer (長い弧) = 色相間一周 = 虹色 */
+    background: linear-gradient(90deg in hsl longer hue, red, red);
+  }
+
+  .blackBg {
+    width: 100%;
+    height: var(--rect-height);
+    background-color: black;
+    align-content: center;
+    text-align: center;
+  }
+
+  .rainbowGradient {
+    width: 100%;
+    background: linear-gradient(90deg in hsl longer hue, red, red);
+    background-size: 300px 100%;
+    background-clip: text;
+    color: transparent;
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: bold;
+    animation: rainbow-bg 1s linear infinite;
+  }
+
+  @keyframes rainbow-bg {
+    to {
+      background-position: 300px 0;
+    }
+  }
+
+  .rainbowGradient_shadow {
+    position: absolute;
+    filter: blur(20px);
+    pointer-events: none;
+  }
+
+  @property --conic-degree {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+  }
+
+  .circleWrapper {
+    width: 100%;
+    height: calc(var(--rect-height) * 2);
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    place-items: center;
+    margin-bottom: 16px;
+
+    > p {
+      position: absolute;
+      font-size: clamp(0.5rem, 3vw, 1.5rem);
+      word-break: break-all;
+      padding: 18px;
+    }
+  }
+
+  .circleRainbow {
+    width: calc(var(--rect-height) * 2);
+    height: calc(var(--rect-height) * 2);
+    border-radius: 50%;
+    animation: circle-rainbow 1s linear infinite;
+    background: conic-gradient(from var(--conic-degree) in hsl longer hue, red, red);
+
+    /* 円形にくり抜く */
+    mask-image: linear-gradient(black), radial-gradient(white 50%, transparent 50%);
+    mask-repeat: no-repeat;
+    mask-position: center, center;
+    mask-size: 100% 100%, 90% 90%;
+    mask-composite: exclude;
+  }
+
+  @keyframes circle-rainbow {
+    to {
+      --conic-degree: 360deg;
+    }
+  }
+</style>
+
+<body>
+<div class="rainbow"></div>
+
+<div class="blackBg">
+  <div class="rainbowGradient rainbowGradient_shadow">
+    <p>RAINBOW GRADATION</p>
+  </div>
+  <div class="rainbowGradient">
+    <p>RAINBOW GRADATION</p>
+  </div>
+</div>
+
+<div class="circleWrapper">
+  <p>
+    RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG
+    RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG
+    RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG
+    RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG
+    RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG
+    RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG
+  </p>
+  <div class="circleRainbow"></div>
+</div>
+</body>
+</html>
