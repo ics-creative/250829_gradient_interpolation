@@ -7,11 +7,6 @@
 </head>
 <link rel="stylesheet" href="base.css">
 <style>
-  :root {
-    /* 比較デモ用の矩形の高さ */
-    --rect-height: calc((100vh - 16px * 4) / 5);
-  }
-
   .gradationRect {
     width: 100%;
     height: var(--rect-height);
@@ -21,46 +16,38 @@
     background: linear-gradient(90deg, red, blue);
   }
 
-  .gradationRect_basicLayer {
-    background: linear-gradient(90deg, red, transparent), linear-gradient(90deg, transparent, blue);
-  }
-
-  /* 直交色空間での補間 */
+  /* oklabでの補間 */
   .gradationRect_oklab {
     background: linear-gradient(90deg in oklab, red, blue);
   }
 
-  /* 円筒色空間での補間 */
+  /* hslでの補間 */
   .gradationRect_hslShorterHue {
     background: linear-gradient(90deg in hsl shorter hue, red, blue);
     /* 以下と同等（省略すると短い弧） */
     /*background: linear-gradient(90deg in hsl, red, blue);*/
   }
 
-  /* 円筒色空間での補間（長い弧を指定） */
+  /* hslでの補間（長い弧を指定） */
   .gradationRect_hslLongerHue {
     background: linear-gradient(90deg in hsl longer hue, red, blue);
   }
 </style>
 <body>
 <div class="gradationRect gradationRect_basic">
-  <h3>通常のグラデーション</h3>
-</div>
-
-<div class="gradationRect gradationRect_basicLayer">
-  <h3>通常のグラデーション2(赤ー透明 と 透明ー青 の重ね合わせ)</h3>
+  <h3>既定のグラデーション（<code>srgb</code>）</h3>
 </div>
 
 <div class="gradationRect gradationRect_oklab">
-  <h3>直交色空間のグラデーション（コントラスト比が一定）</h3>
+  <h3><code>oklab</code></h3>
 </div>
 
 <div class="gradationRect gradationRect_hslShorterHue">
-  <h3>円筒色空間のグラデーション（赤〜青までの短い弧）</h3>
+  <h3><code>hsl shorter hue</code></h3>
 </div>
 
 <div class="gradationRect gradationRect_hslLongerHue">
-  <h3>円筒色空間のグラデーション（赤〜青までの長い弧）</h3>
+  <h3><code>hsl longer hue</code></h3>
 </div>
 </body>
 </html>

@@ -7,10 +7,6 @@
 </head>
 <link rel="stylesheet" href="base.css">
 <style>
-  h3 {
-    color: black;
-  }
-
   .gradationRect {
     width: 100%;
     height: var(--rect-height);
@@ -20,36 +16,36 @@
     background: linear-gradient(90deg, red, white);
   }
 
-  /* 直交色空間での補間 */
+  /* oklab空間での補間 */
   .gradationRect_oklab {
     background: linear-gradient(90deg in oklab, red, white);
   }
 
-  /* 円筒色空間での補間（短い弧） */
+  /* hsl色空間での補間（短い弧） */
   .gradationRect_hslShorterHue {
     background: linear-gradient(90deg in hsl, red, white);
   }
 
-  /* 円筒色空間での補間（長い弧） */
+  /* hsl色空間での補間（長い弧） */
   .gradationRect_hslLongerHue {
     background: linear-gradient(90deg in hsl longer hue, red, white);
   }
 </style>
 <body>
 <div class="gradationRect gradationRect_basic">
-  <h3>通常のグラデーション</h3>
+  <h3>既定のグラデーション（<code>srgb</code>）</h3>
 </div>
 
 <div class="gradationRect gradationRect_oklab">
-  <h3><code>in oklab</code> のグラデーション</h3>
+  <h3><code>oklab</code></h3>
 </div>
 
 <div class="gradationRect gradationRect_hslShorterHue">
-  <h3><code>in hsl</code> のグラデーション: <code>shorter hue</code></h3>
+  <h3><code>hsl shorter hue</code></h3>
 </div>
 
 <div class="gradationRect gradationRect_hslLongerHue">
-  <h3><code>in hsl</code> のグラデーション: <code>longer hue</code></h3>
+  <h3><code>hsl longer hue</code></h3>
 </div>
 </body>
 </html>

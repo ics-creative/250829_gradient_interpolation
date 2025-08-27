@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>polar-color-space</title>
+</head>
+<link rel="stylesheet" href="base.css">
+<style>
+  .gradationRect {
+    width: 100%;
+    height: var(--rect-height);
+  }
+
+  .gradationRect_hsl {
+    background: linear-gradient(90deg in hsl, red, cyan);
+  }
+
+  .gradationRect_hwb {
+    background: linear-gradient(90deg in hwb, red, cyan);
+  }
+
+  .gradationRect_lch {
+    background: linear-gradient(90deg in lch, red, cyan);
+  }
+
+  .gradationRect_oklch{
+    background: linear-gradient(90deg in oklch, red, cyan);
+  }
+</style>
+<body>
+<div class="gradationRect gradationRect_hsl">
+  <h3><code>hsl</code></h3>
+</div>
+
+<div class="gradationRect gradationRect_hwb">
+  <h3><code>hwb</code></h3>
+</div>
+
+<div class="gradationRect gradationRect_lch">
+  <h3><code>lch</code></h3>
+</div>
+
+<div class="gradationRect gradationRect_oklch">
+  <h3><code>oklch</code></h3>
+</div>
+</body>
+</html>

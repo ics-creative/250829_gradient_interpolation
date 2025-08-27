@@ -3,10 +3,14 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>in hsl のグラデーション比較</title>
+  <title>弧の指定方法比較</title>
 </head>
 <link rel="stylesheet" href="base.css">
 <style>
+  :root {
+    --rect-height: calc((100vh - 16px * 7) / 8);
+  }
+
   .gradationRect {
     width: 100%;
     height: var(--rect-height);
@@ -31,6 +35,44 @@
   .gradationRect_decreasingHue {
     background: linear-gradient(90deg in hsl decreasing hue, red, cyan);
   }
+
+  .rowWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    .square {
+      width: min(45vw, 380px);
+      height: min(45vw, 380px);
+      animation: hue-difference 5s linear infinite;
+    }
+  }
+
+  @property --custom-color {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #f00;
+  }
+
+  /* longer: 補間の弧は長い方の弧
+      = 色相角がアニメーション中に180度を超えたとき、弧が反転 */
+  .longerHue {
+    background: conic-gradient(in hsl longer hue, var(--custom-color), magenta);
+  }
+
+  /* increasing: 補間の弧は時計回り
+  = 色相角がアニメーション中に180度を超えても弧が反転しない */
+  .increasingHue {
+    background: conic-gradient(in hsl increasing hue, var(--custom-color), magenta);
+  }
+
+  @keyframes hue-difference {
+    0% {
+      --custom-color: yellow;
+    }
+    100% {
+      --custom-color: cyan;
+    }
+  }
 </style>
 <body>
 <div class="gradationRect gradationRect_shorterHue">
@@ -47,6 +89,15 @@
 
 <div class="gradationRect gradationRect_decreasingHue">
   <h3><code>decreasing hue</code></h3>
+</div>
+
+<div class="rowWrapper">
+  <div class="square longerHue">
+    <h3><code>longer hue</code></h3>
+  </div>
+  <div class="square increasingHue">
+    <h3><code>increasing hue</code></h3>
+  </div>
 </div>
 </body>
 </html>
