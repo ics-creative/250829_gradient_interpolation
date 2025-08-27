@@ -22,10 +22,10 @@
   }
 
   /* hslでの補間 */
-  .gradationRect_hslShorterHue {
-    background: linear-gradient(90deg in hsl shorter hue, red, blue);
-    /* 以下と同等（省略すると短い弧） */
-    /*background: linear-gradient(90deg in hsl, red, blue);*/
+  .gradationRect_hsl {
+    background: linear-gradient(90deg in hsl, red, blue);
+    /* 以下と同等 */
+    /*background: linear-gradient(90deg in hsl shorter hue, red, blue);*/
   }
 
   /* hslでの補間（長い弧を指定） */
@@ -42,8 +42,8 @@
   <h3><code>oklab</code></h3>
 </div>
 
-<div class="gradationRect gradationRect_hslShorterHue">
-  <h3><code>hsl shorter hue</code></h3>
+<div class="gradationRect gradationRect_hsl">
+  <h3><code>hsl</code></h3>
 </div>
 
 <div class="gradationRect gradationRect_hslLongerHue">

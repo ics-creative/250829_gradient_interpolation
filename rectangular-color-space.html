@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="base.css">
 <style>
   :root {
-    --rect-height: calc((100vh - 16px * 5) / 6);
+    --rect-height: calc((100vh - 16px * 4) / 5);
   }
 
   .gradationRect {
@@ -35,10 +35,6 @@
   .gradationRect_oklab{
     background: linear-gradient(90deg in oklab, red, cyan);
   }
-
-  .gradationRect_xyz {
-    background: linear-gradient(90deg in xyz, red, cyan);
-  }
 </style>
 <body>
 <div class="gradationRect gradationRect_srgb">
@@ -59,10 +55,6 @@
 
 <div class="gradationRect gradationRect_oklab">
   <h3><code>oklab</code></h3>
-</div>
-
-<div class="gradationRect gradationRect_xyz">
-  <h3><code>xyz</code></h3>
 </div>
 </body>
 </html>
