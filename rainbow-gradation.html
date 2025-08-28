@@ -7,11 +7,21 @@
 </head>
 <link rel="stylesheet" href="base.css">
 <style>
-  .rainbow {
+  :root {
+    --rect-height: calc((100vh - 16px * 4) / 5);
+  }
+  .gradationRect {
     width: 100%;
     height: var(--rect-height);
+  }
+
+  .gradationRect_hsl {
     /* red から red の longer (長い弧) = 色相間一周 = 虹色 */
     background: linear-gradient(90deg in hsl longer hue, red, red);
+  }
+
+  .gradationRect_oklch{
+    background: linear-gradient(90deg in oklch longer hue, red, red);
   }
 
   .blackBg {
@@ -91,7 +101,13 @@
 </style>
 
 <body>
-<div class="rainbow"></div>
+<div class="gradationRect gradationRect_hsl">
+  <h3><code>hsl</code></h3>
+</div>
+
+<div class="gradationRect gradationRect_oklch">
+  <h3><code>oklch</code></h3>
+</div>
 
 <div class="blackBg">
   <div class="rainbowGradient rainbowGradient_shadow">
