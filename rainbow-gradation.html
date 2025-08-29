@@ -10,6 +10,7 @@
   :root {
     --rect-height: calc((100vh - 16px * 4) / 5);
   }
+
   .gradationRect {
     width: 100%;
     height: var(--rect-height);
@@ -20,7 +21,7 @@
     background: linear-gradient(90deg in hsl longer hue, red, red);
   }
 
-  .gradationRect_oklch{
+  .gradationRect_oklch {
     background: linear-gradient(90deg in oklch longer hue, red, red);
   }
 
@@ -81,22 +82,41 @@
   .circleRainbow {
     width: calc(var(--rect-height) * 2);
     height: calc(var(--rect-height) * 2);
-    border-radius: 50%;
     animation: circle-rainbow 1s linear infinite;
     background: conic-gradient(from var(--conic-degree) in hsl longer hue, red, red);
 
     /* 円形にくり抜く */
-    mask-image: linear-gradient(black), radial-gradient(white 50%, transparent 50%);
+    mask-image: linear-gradient(black),
+    radial-gradient(white 45%, transparent 45%);
     mask-repeat: no-repeat;
-    mask-position: center, center;
-    mask-size: 100% 100%, 90% 90%;
+    mask-position: center;
+    mask-size: 100% 100%, 100% 100%;
     mask-composite: exclude;
   }
+
+  .circleRainbow_c {
+    border-radius: 50%;
+  }
+
+  .circleRainbow_r {
+    mask-image: linear-gradient(black),
+    radial-gradient(white 20%, transparent 20%), linear-gradient(black), radial-gradient(transparent 50%, white 50%);
+    mask-repeat: no-repeat;
+    mask-position: center,top left,center,bottom right;
+    mask-size: 100% 100%, 90% 90%, 70% 70%, 60% 60%;
+    mask-composite: exclude;
+  }
+
 
   @keyframes circle-rainbow {
     to {
       --conic-degree: 360deg;
     }
+  }
+
+  .rowWrapper {
+    display: flex;
+    gap: 16px;
   }
 </style>
 
@@ -127,7 +147,11 @@
     RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG
     RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG RAINBOW COOL BG
   </p>
+  <div class="rowWrapper">
   <div class="circleRainbow"></div>
+  <div class="circleRainbow circleRainbow_c"></div>
+  <div class="circleRainbow circleRainbow_r"></div>
+  </div>
 </div>
 </body>
 </html>
