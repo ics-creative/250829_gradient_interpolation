@@ -12,8 +12,12 @@
     height: var(--rect-height);
   }
 
-  .gradationRect_basic {
-    background: linear-gradient(90deg, red, blue);
+  .gradationRect_srgb {
+    background: linear-gradient(90deg in srgb, red, blue);
+
+    /* 以下も同等の結果となる */
+    /*background: linear-gradient(90deg, red, blue);*/
+    /*background: linear-gradient(90deg, #ff0000, #0000ff);*/
   }
 
   /* oklabでの補間 */
@@ -22,7 +26,7 @@
   }
 
   /* hslでの補間 */
-  .gradationRect_hsl {
+  .gradationRect_hslShorterHue {
     background: linear-gradient(90deg in hsl, red, blue);
     /* 以下と同等 */
     /*background: linear-gradient(90deg in hsl shorter hue, red, blue);*/
@@ -34,15 +38,15 @@
   }
 </style>
 <body>
-<div class="gradationRect gradationRect_basic">
-  <h3>直交座標系の補間：既定のグラデーション（<code>srgb</code>）</h3>
+<div class="gradationRect gradationRect_srgb">
+  <h3>直交座標系の補間：<code>srgb</code></h3>
 </div>
 
 <div class="gradationRect gradationRect_oklab">
   <h3>直交座標系の補間：<code>oklab</code></h3>
 </div>
 
-<div class="gradationRect gradationRect_hsl">
+<div class="gradationRect gradationRect_hslShorterHue">
   <h3>極座標系の補間：<code>hsl shorter hue</code></h3>
 </div>
 
