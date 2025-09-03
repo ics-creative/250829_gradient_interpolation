@@ -8,7 +8,15 @@
 <link rel="stylesheet" href="base.css">
 <style>
   :root {
-    --rect-height: calc((100vh - 16px * 7) / 8);
+    --rect-height: calc((100vh - 8px * 4) / 9);
+  }
+
+  body {
+    gap: 8px;
+  }
+
+  h3 {
+    padding: 8px;
   }
 
   .gradationRect {
@@ -42,8 +50,8 @@
     gap: 16px;
 
     .square {
-      width: min(45vw, 380px);
-      height: min(45vw, 380px);
+      width: min(calc(var(--rect-height) * 5), 380px);
+      height: min(calc(var(--rect-height) * 5), 380px);
       animation: hue-difference 5s linear infinite;
     }
   }
@@ -61,7 +69,7 @@
   }
 
   /* increasing: 補間の弧は時計回り
-  = 色相角がアニメーション中に180度を超えても弧が反転しない */
+      = 色相角がアニメーション中に180度を超えても弧が反転しない */
   .increasingHue {
     background: conic-gradient(in hsl increasing hue, var(--custom-color), magenta);
   }
